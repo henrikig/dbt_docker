@@ -1,0 +1,7 @@
+# download base image
+
+# Set workdir to /app
+
+# copy dbt profile into /root/.dbt/profiles.yml
+
+# copy the current directory into /app
