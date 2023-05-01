@@ -1,5 +1,7 @@
 # dbt_docker
 
+[![Deploy to ECR](https://github.com/henrikig/dbt_docker/actions/workflows/build-dbt-image.yaml/badge.svg)](https://github.com/henrikig/dbt_docker/actions/workflows/build-dbt-image.yaml)
+
 This is a template repository for building and pushing a dbt project with Docker
 to AWS ECR.
 
