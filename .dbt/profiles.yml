@@ -1,0 +1,14 @@
+dbt_docker:
+  outputs:
+
+    dev:
+      type: postgres
+      threads: 1
+      host: localhost 
+      port: 5432
+      user: "{{ env_var('DBT_USER') }}"
+      pass: "{{ env_var('DBT_ENV_SECRET_PASSWORD') }}"
+      dbname: postgres
+      schema: public
+
+  target: dev
