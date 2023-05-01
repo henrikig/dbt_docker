@@ -30,7 +30,7 @@ listening on port 5432.
 
 ##### Build and run the container
 
-The [./Dockerfile](Dockerfile) in this repository defines the dbt image. Simply
+The [Dockerfile](Dockerfile) in this repository defines the dbt image. Simply
 put, this Dockerfile downloads the official dbt postgres Docker image which
 includes the dbt postgres adapter along with other necessary dependencies. Then,
 the dbt profile and dbt project are copied into their respective locations.
@@ -60,7 +60,7 @@ It is also possible to create a `.env` file and use this as input to the
 container instead. Create a file called `.env` in the root of this repository
 and paste the following content:
 
-```sh
+```python
 DBT_USER=postgres
 DBT_ENV_SECRET_PASSWORD=password
 ```
@@ -112,7 +112,7 @@ performing different actions to ECR, including pushing an image:
 In addition, a trust policy needs to be set up, allowing the given repository to
 assume this role. This trust policy depends on a Github oidc provider being set
 up, see
-[https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services](here)
+[here](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
 for more information.
 
 ```json
