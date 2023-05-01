@@ -1,6 +1,11 @@
 # The name of the action (displayed on Github)
 name: Deploy to ECR
 
+# add necessary permissions
+permissions:
+  id-token: write
+  contents: read
+
 # specify events that should trigger the workflow
 # (https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#running-your-workflow-only-when-a-push-to-specific-branches-occurs)
 on:
