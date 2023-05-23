@@ -1,7 +1,9 @@
-# download base image
+FROM python:3.9
 
-# Set workdir to /app
+WORKDIR /app
 
-# copy dbt profile into /root/.dbt/profiles.yml
+COPY . .
 
-# copy the current directory into /app
+RUN pip install -r requirements.txt
+
+ENTRYPOINT [ "dbt", "debug" ]
