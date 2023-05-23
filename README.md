@@ -1,5 +1,7 @@
 # dbt_docker
 
+[![Deploy to ECR](https://github.com/henrikig/dbt_docker/actions/workflows/build-dbt-image.yaml/badge.svg)](https://github.com/henrikig/dbt_docker/actions/workflows/build-dbt-image.yaml)
+
 This is a template repository for building and pushing a dbt project with Docker
 to AWS ECR.
 
@@ -30,7 +32,7 @@ listening on port 5432.
 
 ##### Build and run the container
 
-The [./Dockerfile](Dockerfile) in this repository defines the dbt image. Simply
+The [Dockerfile](Dockerfile) in this repository defines the dbt image. Simply
 put, this Dockerfile downloads the official dbt postgres Docker image which
 includes the dbt postgres adapter along with other necessary dependencies. Then,
 the dbt profile and dbt project are copied into their respective locations.
@@ -50,7 +52,7 @@ To start a container using the specified image, run the following command:
 docker run --network=host -e DBT_USER=postgres -e DBT_ENV_SECRET_PASSWORD=password dbt_docker
 ```
 
-The [./.dbt/profiles.yml](dbt profile) copied into the container looks for the
+The [dbt profile](./.dbt/profiles.yml) copied into the container looks for the
 dbt postgres username and password as environment variables, which is why we
 pass them along with the `docker run` command. This is both to avoid having the
 username and password in plain sight in the repository, as well as it allows for
@@ -60,7 +62,7 @@ It is also possible to create a `.env` file and use this as input to the
 container instead. Create a file called `.env` in the root of this repository
 and paste the following content:
 
-```sh
+```python
 DBT_USER=postgres
 DBT_ENV_SECRET_PASSWORD=password
 ```
@@ -77,8 +79,8 @@ container increases.
 ### Building the image with Github actions
 
 This project also sets up a CI pipeline with Github actions, building the image
-and pushing it to AWS ECR. See [./.github/workflows/build-dbt-image.yaml](this
-workflow) for reference.
+and pushing it to AWS ECR. See
+[this workflow](./.github/workflows/build-dbt-image.yaml) for reference.
 
 In order for the action to work, a role on AWS with ECR actions allowed needs to
 be defined. The following is an example of a policy that gives rights for
@@ -112,7 +114,7 @@ performing different actions to ECR, including pushing an image:
 In addition, a trust policy needs to be set up, allowing the given repository to
 assume this role. This trust policy depends on a Github oidc provider being set
 up, see
-[https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services](here)
+[here](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
 for more information.
 
 ```json
